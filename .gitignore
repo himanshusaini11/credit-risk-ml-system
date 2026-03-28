@@ -25,3 +25,4 @@ CLAUDE.md
 .claude/
 .mcp.jsonnotebooks/*.csv
 notebooks/notebook-extraction.md
+docs/
