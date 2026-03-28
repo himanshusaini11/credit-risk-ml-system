@@ -64,7 +64,6 @@ PYTHONPATH=src .venv/bin/python -m pytest tests/ -v
 
 ```
 credit-risk-ml-system/
-├── CLAUDE.md                        # Project memory — conventions, status, dev commands
 ├── configs/
 │   └── default.yaml                 # Central config: data path, model params, thresholds
 ├── src/creditrisk/
@@ -95,9 +94,6 @@ credit-risk-ml-system/
 │   ├── test_data_contract.py
 │   ├── test_split.py
 │   └── test_train_evaluate.py
-├── docs/
-│   ├── architecture.md              # Full data flow diagram, model comparison table
-│   └── onboarding.md               # Setup guide, pipeline walkthrough
 ├── artifacts/                       # Gitignored — versioned model artifacts live here
 ├── Dockerfile
 ├── pyproject.toml
@@ -141,17 +137,3 @@ All transformations in `build_feature_engineering()` are pure (no fitted state) 
 **LightGBM with runtime `scale_pos_weight`.** The GMS Credit dataset has a 6.68% positive rate. `scale_pos_weight` is computed from `y_train` at runtime as `(negatives) / (positives)` rather than read from config, so it automatically reflects the actual class distribution in whatever training split is used. LightGBM with histogram-based splits handles the mix of integer counts and continuous ratios without requiring separate encoding pipelines.
 
 **Train-only fit discipline.** `build_preprocessor()` returns a `Pipeline` whose first step (`fe`) is a stateless `FunctionTransformer` and whose second step (`ct`) is a `ColumnTransformer` fitted exclusively on `X_train`. `SimpleImputer` computes medians from training data only; `StandardScaler` computes mean and variance from training data only. Validation and test splits are transformed using those training statistics, never re-fitted.
-
----
-
-## Development
-
-Full development commands, conventions, and runbook are in [`CLAUDE.md`](CLAUDE.md).
-
-**Slash commands** (Claude Code):
-
-| Command           | Description                                              |
-|-------------------|----------------------------------------------------------|
-| `/review`         | Leakage and AUC review checklist                         |
-| `/retrain`        | Step-by-step clean retrain procedure                     |
-| `/debug-leakage`  | Checklist for detecting preprocessing leakage            |
