@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv*/
+.env
+
+# Artifacts
+artifacts/
+data/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Test cache
+.pytest_cache/
+prompts/
+
+# Others
+CLAUDE.md
+.claude/
+.mcp.jsonnotebooks/*.csv
+notebooks/notebook-extraction.md

@@ -1,0 +1,8 @@
+line-length = 88
+
+[lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+"tests/*" = ["SIM117"]
