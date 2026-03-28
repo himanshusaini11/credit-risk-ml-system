@@ -23,6 +23,8 @@ prompts/
 # Others
 CLAUDE.md
 .claude/
-.mcp.jsonnotebooks/*.csv
+.mcp.json
+notebooks/*.csv
 notebooks/notebook-extraction.md
+
 docs/
